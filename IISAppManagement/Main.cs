@@ -64,7 +64,7 @@ namespace IISAppManagement
             get
             {
                 CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x80;  // Turn on WS_EX_TOOLWINDOW
+                cp.ExStyle |= 0x00080000;
                 return cp;
             }
         }
