@@ -41,11 +41,35 @@ namespace IISAppManagement
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
 
-            mgr.Sites[item.Text].Stop();
-            mgr.ApplicationPools[item.Text].Stop();
-            Thread.Sleep(2000);
-            mgr.Sites[item.Text].Start();
-            mgr.ApplicationPools[item.Text].Start();
+            StopApp(item.Text);
+            StartApp(item.Text);
+        }
+
+        /// <summary>
+        /// Stop the application and its pool
+        /// </summary>
+        /// <param name="appName">Application name in IIS</param>
+        private void StopApp(string appName)
+        {
+            if (mgr.Sites[appName].State != ObjectState.Stopped &&
+                mgr.Sites[appName].State != ObjectState.Stopping)
+                mgr.Sites[appName].Stop();
+
+            if (mgr.ApplicationPools[appName].State != ObjectState.Stopped &&
+                mgr.ApplicationPools[appName].State != ObjectState.Stopping)
+                mgr.ApplicationPools[appName].Stop();
+        }
+
+        /// <summary>
+        /// Start the application and its pool
+        /// </summary>
+        /// <param name="appName">Application name in IIS</param>
+        private void StartApp(string appName)
+        {
+            while (mgr.Sites[appName].State == ObjectState.Stopping) { }
+            mgr.Sites[appName].Start();
+            while (mgr.ApplicationPools[appName].State == ObjectState.Stopping) { }
+            mgr.ApplicationPools[appName].Start();
         }
 
         /// <summary>
@@ -53,10 +77,10 @@ namespace IISAppManagement
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AppExit_Click(object sender, EventArgs e) 
+        private void AppExit_Click(object sender, EventArgs e)
         {
             mgr.Dispose();
-            System.Windows.Forms.Application.Exit(); 
+            System.Windows.Forms.Application.Exit();
         }
 
         protected override CreateParams CreateParams
