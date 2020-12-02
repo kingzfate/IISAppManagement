@@ -1,6 +1,7 @@
 ﻿using IISAppManagement.Properties;
 using Microsoft.Web.Administration;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace IISAppManagement
@@ -10,11 +11,12 @@ namespace IISAppManagement
     /// </summary>
     public class Application : ApplicationContext
     {
-        private readonly NotifyIcon trayIcon = new NotifyIcon();
         private readonly IISManager iisMgr = new IISManager();
+        private readonly NotifyIcon trayIcon = new NotifyIcon();
         private const string runApp = "Run";
         private const string stopApp = "Stop";
         private const string rebootApp = "Reboot";
+        ToolStripMenuItem Run, Stop, Reboot;
 
         public Application()
         {
@@ -29,21 +31,58 @@ namespace IISAppManagement
             trayIcon.ContextMenuStrip = new ContextMenuStrip();
             trayIcon.Icon = Resources.main;
             trayIcon.Visible = true;
-
-            ToolStripMenuItem Run = new ToolStripMenuItem { Name = runApp, Text = "Запустить" };
-            ToolStripMenuItem Stop = new ToolStripMenuItem { Name = stopApp, Text = "Остановить" };
-            ToolStripMenuItem Reboot = new ToolStripMenuItem { Name = rebootApp, Text = "Перезагрузка" };
+            trayIcon.Click += Notify_Click;
+            trayIcon.Text = "IISAppManagement";
+            Run = new ToolStripMenuItem { Name = runApp, Text = runApp };
+            Stop = new ToolStripMenuItem { Name = stopApp, Text = stopApp };
+            Reboot = new ToolStripMenuItem { Name = rebootApp, Text = rebootApp };
             Run.Click += InstanceContext_Click;
             Stop.Click += InstanceContext_Click;
             Reboot.Click += InstanceContext_Click;
+            AddMenuItem();
+        }
 
+        /// <summary>
+        /// Handling a click on a tray icon
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Notify_Click(object sender, EventArgs e)
+        {
+            trayIcon.ContextMenuStrip.Items.Clear();
+            AddMenuItem();
+        }
+
+        /// <summary>
+        /// Add and recalculate context menu items
+        /// </summary>
+        public void AddMenuItem()
+        {
             foreach (Site site in iisMgr.GetSites())
             {
-                ToolStripMenuItem newElement = new ToolStripMenuItem { Name = site.Name, Text = site.Name };
+                ToolStripMenuItem newElement = new ToolStripMenuItem { Name = site.Name, Text = site.Name, Image = GetImageStatusConnection(site.Name) };
                 newElement.DropDownItems.AddRange(new ToolStripItem[] { Run, Stop, Reboot });
                 trayIcon.ContextMenuStrip.Items.Add(newElement);
             }
             trayIcon.ContextMenuStrip.Items.Add("Exit", null, AppExit_Click);
+        }
+
+        /// <summary>
+        /// Get the status of connection and application operation as an image
+        /// </summary>
+        /// <returns></returns>
+        private Bitmap GetImageStatusConnection(string appName)
+        {
+            ObjectState appState = iisMgr.GetAppState(appName);
+            ObjectState poolState = iisMgr.GetPoolState(appName);
+
+            if (appState == ObjectState.Stopped || poolState == ObjectState.Stopped) return Resources.stopped;
+            else if (appState == ObjectState.Stopping || poolState == ObjectState.Stopping) return Resources.stopping;
+            else if (appState == ObjectState.Started && poolState == ObjectState.Started) return Resources.started;
+            else if (appState == ObjectState.Started && poolState == ObjectState.Starting) return Resources.starting;
+            else if (appState == ObjectState.Starting && poolState == ObjectState.Started) return Resources.starting;
+            else if (appState == ObjectState.Starting && poolState == ObjectState.Starting) return Resources.starting;
+            else return Resources.stopped;
         }
 
         /// <summary>

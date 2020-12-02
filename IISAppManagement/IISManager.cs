@@ -46,5 +46,17 @@ namespace IISAppManagement
         /// Close the manager and all streams
         /// </summary>
         public void CloseApplication() => srvMgr.Dispose();
+
+        /// <summary>
+        /// Get application status
+        /// </summary>
+        /// <returns>ObjectState</returns>
+        public ObjectState GetAppState(string appName) => srvMgr.Sites[appName].State;
+
+        /// <summary>
+        /// Get pool status
+        /// </summary>
+        /// <returns>ObjectState</returns>
+        public ObjectState GetPoolState(string appName) => srvMgr.ApplicationPools[appName].State;
     }
 }
