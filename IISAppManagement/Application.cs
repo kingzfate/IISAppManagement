@@ -60,12 +60,29 @@ namespace IISAppManagement
         {
             foreach (Site site in iisMgr.GetSites())
             {
-                ToolStripMenuItem newElement = new ToolStripMenuItem { Name = site.Name, Text = site.Name, Image = GetImageStatusConnection(site.Name) };
+                ToolStripMenuItem newElement = new ToolStripMenuItem { Name = site.Name, Text = site.Name, Image = GetImageStatusConnection(site.Name) };                
                 newElement.DropDownItems.AddRange(new ToolStripItem[] { Run, Stop, Reboot });
                 trayIcon.ContextMenuStrip.Items.Add(newElement);
             }
+            trayIcon.ContextMenuStrip.Items.Add(new ToolStripSeparator { });
+            trayIcon.ContextMenuStrip.Items.Add("Enable all", null, EnableAllApp_Click);
+            trayIcon.ContextMenuStrip.Items.Add("Disable all", null, DisableAllApp_Click);
             trayIcon.ContextMenuStrip.Items.Add("Exit", null, AppExit_Click);
         }
+
+        /// <summary>
+        /// Enable all sites and application pools
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EnableAllApp_Click(object sender, EventArgs e) => iisMgr.StartAllApp();
+
+        /// <summary>
+        /// Disable all sites and application pools
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DisableAllApp_Click(object sender, EventArgs e) => iisMgr.StopAllApp();
 
         /// <summary>
         /// Get the status of connection and application operation as an image
