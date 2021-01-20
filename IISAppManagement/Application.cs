@@ -16,12 +16,8 @@ namespace IISAppManagement
         private const string runApp = "Run";
         private const string stopApp = "Stop";
         private const string rebootApp = "Reboot";
-        ToolStripMenuItem Run, Stop, Reboot;
 
-        public Application()
-        {
-            SettingsNotify();
-        }
+        public Application() => SettingsNotify();
 
         /// <summary>
         /// Tray app setup
@@ -33,12 +29,6 @@ namespace IISAppManagement
             trayIcon.Visible = true;
             trayIcon.Click += Notify_Click;
             trayIcon.Text = "IISAppManagement";
-            Run = new ToolStripMenuItem { Name = runApp, Text = runApp };
-            Stop = new ToolStripMenuItem { Name = stopApp, Text = stopApp };
-            Reboot = new ToolStripMenuItem { Name = rebootApp, Text = rebootApp };
-            Run.Click += InstanceContext_Click;
-            Stop.Click += InstanceContext_Click;
-            Reboot.Click += InstanceContext_Click;
             AddMenuItem();
         }
 
@@ -60,7 +50,10 @@ namespace IISAppManagement
         {
             foreach (Site site in iisMgr.GetSites())
             {
-                ToolStripMenuItem newElement = new ToolStripMenuItem { Name = site.Name, Text = site.Name, Image = GetImageStatusConnection(site.Name) };                
+                ToolStripMenuItem Run = null, Stop = null, Reboot = null;
+                CreateButton(out Run, out Stop, out Reboot);
+                
+                ToolStripMenuItem newElement = new ToolStripMenuItem { Name = site.Name, Text = site.Name, Image = GetImageStatusConnection(site.Name) };
                 newElement.DropDownItems.AddRange(new ToolStripItem[] { Run, Stop, Reboot });
                 trayIcon.ContextMenuStrip.Items.Add(newElement);
             }
@@ -68,6 +61,22 @@ namespace IISAppManagement
             trayIcon.ContextMenuStrip.Items.Add("Enable all", null, EnableAllApp_Click);
             trayIcon.ContextMenuStrip.Items.Add("Disable all", null, DisableAllApp_Click);
             trayIcon.ContextMenuStrip.Items.Add("Exit", null, AppExit_Click);
+        }
+
+        /// <summary>
+        /// Create buttons and assign them click behavior
+        /// </summary>
+        /// <param name="Run">Pool and application launch button</param>
+        /// <param name="Stop">Pool and application stop button</param>
+        /// <param name="Reboot">Pool and application reboot button</param>
+        private void CreateButton(out ToolStripMenuItem Run, out ToolStripMenuItem Stop, out ToolStripMenuItem Reboot)
+        {
+            Run = new ToolStripMenuItem { Name = runApp, Text = runApp };
+            Stop = new ToolStripMenuItem { Name = stopApp, Text = stopApp };
+            Reboot = new ToolStripMenuItem { Name = rebootApp, Text = rebootApp };
+            Run.Click += InstanceContext_Click;
+            Stop.Click += InstanceContext_Click;
+            Reboot.Click += InstanceContext_Click;
         }
 
         /// <summary>
