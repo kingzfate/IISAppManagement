@@ -1,16 +1,15 @@
 using System;
 
-namespace IISAppManagement
+namespace IISAppManagement;
+
+/// <summary>
+/// Start point of the program
+/// </summary>
+static class Program
 {
     /// <summary>
-    /// Start point of the program
+    ///  The main entry point for the application.
     /// </summary>
-    static class Program
-    {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main() => System.Windows.Forms.Application.Run(new Application());
-    }
+    [STAThread]
+    static void Main() => System.Windows.Forms.Application.Run(new Application());
 }
