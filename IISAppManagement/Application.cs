@@ -11,8 +11,8 @@ namespace IISAppManagement;
 /// </summary>
 public class Application : ApplicationContext
 {
-    private readonly IISManager iisMgr = new IISManager();
-    private readonly NotifyIcon trayIcon = new NotifyIcon();
+    private readonly IISManager iisMgr = new();
+    private readonly NotifyIcon trayIcon = new();
     private const string runApp = "Run";
     private const string stopApp = "Stop";
     private const string rebootApp = "Reboot";
