@@ -18,6 +18,9 @@ public class IISManager
         foreach (ApplicationPool pool in srvMgr.ApplicationPools) StopPool(pool.Name);
     }
 
+    /// <summary>
+    /// Start all application and pools
+    /// </summary>
     public void StartAllApp()
     {
         foreach (Site site in srvMgr.Sites) StartSite(site.Name);

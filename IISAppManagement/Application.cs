@@ -50,10 +50,9 @@ public class Application : ApplicationContext
     {
         foreach (Site site in iisMgr.GetSites())
         {
-            ToolStripMenuItem Run = null, Stop = null, Reboot = null;
-            CreateButton(out Run, out Stop, out Reboot);
+            CreateButton(out ToolStripMenuItem Run, out ToolStripMenuItem Stop, out ToolStripMenuItem Reboot);
 
-            ToolStripMenuItem newElement = new ToolStripMenuItem { Name = site.Name, Text = site.Name, Image = GetImageStatusConnection(site.Name) };
+            ToolStripMenuItem newElement = new() { Name = site.Name, Text = site.Name, Image = GetImageStatusConnection(site.Name) };
             newElement.DropDownItems.AddRange(new ToolStripItem[] { Run, Stop, Reboot });
             trayIcon.ContextMenuStrip.Items.Add(newElement);
         }
