@@ -58,10 +58,9 @@ An application that can allow you to quickly disable all projects in IIS or rest
 
 The application is developed using
 
-* WPF
+* Console Application
 * C# 12
 * .NET 8
-* ReactiveUI
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
