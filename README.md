@@ -9,19 +9,19 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a>
     <img src="src/UI/YaDiskBackup.Client/Resources/ico.png" alt="Logo" width="128" height="128">
   </a>
 
   <h3 align="center">IISAppManagement</h3>
 
   <p align="center">
-   The application is designed to scan a specific folder on your local computer and when a new file appears, it sends it to Yandex.disk
+   Application for managing iis sites and application pools via tray
     <br />
     <br />
-    <a href="https://github.com/kingzfate/YaDiskBackup/issues">Report Bug</a>
+    <a href="https://github.com/kingzfate/IISAppManagement/issues">Report Bug</a>
     ·
-    <a href="https://github.com/kingzfate/YaDiskBackup/issues">Request Feature</a>
+    <a href="https://github.com/kingzfate/IISAppManagement/issues">Request Feature</a>
   </p>
 </div>
 
