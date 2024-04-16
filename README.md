@@ -115,7 +115,7 @@ Project Link: https://github.com/kingzfate/YaDiskBackup
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/kingzfate/IISAppManagement.svg?style=for-the-badge
-[contributors-url]: https://github.com/kingzfate/YaDiskBackup/graphs/contributors
+[contributors-url]: https://github.com/kingzfate/IISAppManagement/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/kingzfate/YaDiskBackup.svg?style=for-the-badge
 [forks-url]: https://github.com/kingzfate/YaDiskBackup/network/members
 [stars-shield]: https://img.shields.io/github/stars/kingzfate/YaDiskBackup.svg?style=for-the-badge
