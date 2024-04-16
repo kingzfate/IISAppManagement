@@ -78,7 +78,7 @@ To start working with the application, you need to enable IIS on the server and 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-To use the application, you need to select a folder in the Yandex disk cloud, add a folder on your local computer that will be checked for new files, add a Yandex application token and choose the most important thing, whether to search in subfolders. Because sometimes there are cases when backup files lie a little deeper
+You can use the application in a simple way. You will see all your web applications displayed in green if they are running, yellow if they are in reboot and red if they are turned off, and you can also run all these commands for each application. In addition, there are commands below to close or launch all applications at once
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
