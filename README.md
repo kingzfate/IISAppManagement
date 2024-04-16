@@ -47,7 +47,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]
 
 The application will be useful for those who want to save their backup data and send it to the Yandex disk cloud. It automatically scans the selected folder and when a new file appears, as soon as it is finally downloaded, it will start transferring the file to the cloud
 
@@ -135,6 +135,6 @@ Project Link: https://github.com/kingzfate/YaDiskBackup
 [issues-url]: https://github.com/kingzfate/YaDiskBackup/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/nikavrz/
-[product-screenshot]: src/UI/YaDiskBackup.Client/Resources/interface.jpg
+[product-screenshot]: IISAppManagement/Resources/interface.jpg
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
