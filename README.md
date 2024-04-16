@@ -10,7 +10,7 @@
 <br />
 <div align="center">
   <a>
-    <img src="src/UI/YaDiskBackup.Client/Resources/ico.png" alt="Logo" width="128" height="128">
+    <img src="/IISAppManagement/Resources/main.ico" alt="Logo" width="128" height="128">
   </a>
 
   <h3 align="center">IISAppManagement</h3>
