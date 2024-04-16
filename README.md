@@ -69,17 +69,7 @@ The application is developed using
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To start using the application, of course, you need to register with Yandex 
-https://yandex.ru 
-
-After that, you need to get your cloud and create a folder to save the files
-https://disk.yandex.ru 
-
-Next, we register in Yandex applications 
-https://oauth.yandex.ru
-
-And we get our Token by substituting it into this link 
-https://oauth.yandex.ru/authorize?response_type=token&client_id=YOUR_CLIENT_ID
+To start working with the application, you need to enable IIS on the server and create web applications
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
