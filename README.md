@@ -49,7 +49,7 @@
 
 ![Product Name Screen Shot][product-screenshot]
 
-The application will be useful for those who want to save their backup data and send it to the Yandex disk cloud. It automatically scans the selected folder and when a new file appears, as soon as it is finally downloaded, it will start transferring the file to the cloud
+An application that can allow you to quickly disable all projects in IIS or restart them using the Windows system tray
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
